@@ -27,6 +27,13 @@ Listed below are the modules used in this experiment:
 
 ## Deployment
 
+In order to deploy this repository, change your directory to which environment you want:
+
+```
+cd iac/aws/<dev|prod>
+
+```
+
 ## Testing
 
 ## Contributing
