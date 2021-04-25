@@ -19,9 +19,10 @@ resource "random_password" "master_password" {
 }
 
 resource "aws_ssm_parameter" "db_pwd" {
-  name  = "/aws/${data.aws_region.name}/rds/${var.identifier}"
+  count = var.create_db_instance && var.create_random_password ? 1 : 0
+  name  = "/aws/${data.aws_region.current.name}/rds/${var.identifier}"
   type  = "SecureString"
-  value = random_password.master_password.result
+  value = random_password.master_password[0].result
 }
 
 module "db_subnet_group" {
